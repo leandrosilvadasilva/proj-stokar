@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.utils import timezone
 
@@ -7,7 +6,7 @@ class Alimento(models.Model):
     quantidade = models.IntegerField()  # valores inteiros
     validade = models.DateField()
     peso = models.DecimalField(max_digits=10, decimal_places=2)
-    
+
     def esta_vencido(self):
         return self.validade < timezone.now().date()
 
