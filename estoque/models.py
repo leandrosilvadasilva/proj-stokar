@@ -2,8 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 class Alimento(models.Model):
-    nome = models.CharField(max_length=100, unique=True)  # Garante que cada alimento seja único no estoque
-    quantidade = models.IntegerField()  # valores inteiros
+    nome = models.CharField(max_length=100) 
+    quantidade = models.IntegerField()
     validade = models.DateField()
     peso = models.DecimalField(max_digits=10, decimal_places=2)
 
