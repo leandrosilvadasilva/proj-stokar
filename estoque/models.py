@@ -13,3 +13,6 @@ class Alimento(models.Model):
 
     def status_validade(self):
         return "Vencido" if self.esta_vencido() else "Válido"
+    
+    def __str__(self):
+        return self.nome

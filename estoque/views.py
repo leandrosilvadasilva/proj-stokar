@@ -9,6 +9,7 @@ class AlimentoListView(ListView):
     model = Alimento
     template_name = 'alimento_list.html'
 
+
 class AlimentoCreateView(CreateView):
     model = Alimento
     form_class = AlimentoForm  # Utilizando o formulário personalizado AlimentoForm
