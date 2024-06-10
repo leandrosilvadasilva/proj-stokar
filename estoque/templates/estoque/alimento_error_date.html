@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1>Erro de Validação</h1>
+  <p>A validade não pode ser anterior à data atual.</p>
+  <a href="{{ previous_page }}" class="btn btn-secondary">Voltar</a>
+</div>
+{% endblock %}
