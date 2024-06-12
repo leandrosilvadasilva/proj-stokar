@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 class HomeView(TemplateView):
     template_name = 'autenticacao/home.html'
 
+
 class SigupView(TemplateView):
     template_name = 'autenticacao/sigup.html'
 
@@ -50,7 +51,7 @@ class SiginView(TemplateView):
             # Login bem-sucedido, redireciona para a página inicial
             login(request, user)
             # REDIRECIONAR PARA PAGINA
-            return redirect('home')
+            return redirect('/estoque') 
         else:
             # Exibir mensagem de erro se o login falhar
             messages.error(request, 'Nome de usuário ou senha inválidos.')
