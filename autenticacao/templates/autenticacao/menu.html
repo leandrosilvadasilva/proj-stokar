@@ -43,6 +43,17 @@
                       <a class="nav-link active" aria-current="page" href="">Home</a>
                     </li>
 
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'alimento_list' %}">Lista de Alimentos</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'entradas_list' %}">Entradas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'saidas_list' %}">Saídas</a>
+                    </li>
+
                     <form action="{% url 'exit' %}" method="post">
                       {% csrf_token %}
                       <button type="submit" class="nav-link btn btn-link text-light">Sair</button>
@@ -64,22 +75,7 @@
 
 
                 {%endif%}
-<!-- 
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="/">Home</a>
-                </li>
 
-                <li class="nav-item">
-                  <a class="nav-link" href="/sigup">Cadastrar</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="/sigin">Login</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="/exit">Sair</a>
-                </li> -->
 
               </ul>
 

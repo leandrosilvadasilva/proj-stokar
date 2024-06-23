@@ -1,0 +1,46 @@
+<!-- templates/estoque/saidas_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Relatório - Saídas</h1>
+    <div class="row mb-3">
+        <div class="col">
+            <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'saidas_pdf' %}" class="btn btn-success mb-3">Gerar PDF de Saídas</a>
+            <!-- Restante do conteúdo da listagem de saídas -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for saida in saidas %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Alimento:</strong> {{ saida.alimento.nome }}
+                        </div>
+                        <div class="col">
+                            <strong>Quantidade:</strong> {{ saida.quantidade }}
+                        </div>
+                        <div class="col">
+                            <strong>Data:</strong> {{ saida.data_registro|date:"d/m/Y H:i:s" }}
+                        </div>
+                    </div>
+                </li>
+                {% empty %}
+                <li class="list-group-item">Nenhuma saída registrada.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

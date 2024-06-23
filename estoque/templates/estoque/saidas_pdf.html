@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listagem de Saídas de Alimentos</title>
+    <style>
+        /* Estilos opcionais para o PDF */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        .container {
+            margin: 20px;
+        }
+        h1 {
+            font-size: 24px;
+            text-align: center;
+        }
+        .list-group {
+            margin-top: 20px;
+        }
+        .list-group-item {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Listagem de Saídas de Alimentos</h1>
+        <ul class="list-group">
+            {% for saida in saidas %}
+            <li class="list-group-item">
+                <strong>Alimento:</strong> {{ saida.alimento.nome }}<br>
+                <strong>Quantidade:</strong> {{ saida.quantidade }}<br>
+                <strong>Data:</strong> {{ saida.data_registro|date:"d/m/Y H:i:s" }}
+            </li>
+            {% empty %}
+            <li class="list-group-item">Nenhuma saída registrada.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

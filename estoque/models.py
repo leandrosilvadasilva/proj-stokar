@@ -15,3 +15,13 @@ class Alimento(models.Model):
     
     def __str__(self):
         return self.nome
+
+class RegistroEntrada(models.Model):
+    alimento = models.ForeignKey(Alimento, on_delete=models.CASCADE)
+    quantidade = models.IntegerField()
+    data_registro = models.DateTimeField(auto_now_add=True)
+
+class RegistroSaida(models.Model):
+    alimento = models.ForeignKey(Alimento, on_delete=models.CASCADE)
+    quantidade = models.IntegerField()
+    data_registro = models.DateTimeField(auto_now_add=True)

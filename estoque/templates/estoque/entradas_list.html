@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Relatório - Entradas</h1>
+    <div class="row mb-3">
+        <div class="col">
+            <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>
+        </div>
+        <div class="col">
+            <a href="{% url 'entradas_pdf' %}" class="btn btn-success mb-3">Gerar PDF de Entradas</a>
+            <!-- Restante do conteúdo da listagem de entradas -->
+        </div>
+    
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul class="list-group">
+                {% for entrada in entradas %}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <strong>Alimento:</strong> {{ entrada.alimento.nome }}
+                        </div>
+                        <div class="col">
+                            <strong>Quantidade:</strong> {{ entrada.quantidade }}
+                        </div>
+                        <div class="col">
+                            <strong>Data:</strong> {{ entrada.data_registro|date:"d/m/Y H:i:s" }}
+                        </div>
+                    </div>
+                </li>
+                {% empty %}
+                <li class="list-group-item">Nenhuma entrada registrada.</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
