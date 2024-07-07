@@ -1,1 +1,2 @@
-web gunicorn controle_estoque.wsgi:application --log-file -
+web gunicorn core.wsgi:application --log-file -
+
