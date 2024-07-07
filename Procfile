@@ -1,2 +1,2 @@
-web gunicorn core.wsgi.application
+web gunicorn app:app
 
