@@ -6,6 +6,7 @@
   <div class="col">
     <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar para Home</a>
   </div>
+<div id="lista">
   <table class="table">
     <thead>
       <tr>
@@ -64,6 +65,7 @@
       {% endfor %}
     </tbody>
   </table>
+</div>
   <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold">Adicionar +</a>
 </div>
 {% endblock %}
