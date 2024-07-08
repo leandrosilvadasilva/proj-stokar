@@ -1,2 +1,2 @@
-web: gunicorn core:app
+web: gunicorn autenticacao:app
 
