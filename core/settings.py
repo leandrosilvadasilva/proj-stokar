@@ -83,16 +83,28 @@ WSGI_APPLICATION = 'core.wsgi.application'
 #    }
 #}
 
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.postgresql',
+   #     'NAME': 'railway',
+    #    'USER': 'postgres',
+     #   'PASSWORD': 'torFJJMbUhLbBuddJIiYMgaWcVoNGedx',
+      #  'HOST': 'postgres.railway.internal',
+       # 'PORT': '5432',
+    #}
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'railway',
+        'NAME': 'stokar',
         'USER': 'postgres',
-        'PASSWORD': 'torFJJMbUhLbBuddJIiYMgaWcVoNGedx',
-        'HOST': 'postgres.railway.internal',
+        'PASSWORD': '328679',
+        'HOST': 'localhost',
         'PORT': '5432',
     }
 }
+
 
 
 
