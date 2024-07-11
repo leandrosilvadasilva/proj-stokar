@@ -5,6 +5,7 @@
   <h1>Lista de Alimentos</h1>
   <div class="col">
     <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar para Home</a>
+    <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold mb-3">Adicionar +</a>
   </div>
 <div id="lista">
   <table class="table">
@@ -12,8 +13,8 @@
       <tr>
         <th>Nome</th>
         <th>Quantidade</th>
-        <th>Validade</th>
         <th>Peso (Kg)</th>
+        <th>Validade</th>
         <th>Status de Validade</th>
         <th>Ações</th>
       </tr>
@@ -23,8 +24,8 @@
       <tr>
         <td>{{ alimento.nome }}</td>
         <td>{{ alimento.quantidade }}</td>
-        <td>{{ alimento.validade }}</td>
         <td>{{ alimento.peso }}</td>
+        <td>{{ alimento.validade }}</td>
         {% if alimento.status_validade == 'Vencido' %}
         <td class="text-danger fw-bold">{{ alimento.status_validade }} - <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-sm btn-danger fw-bold justify-content-center">EXCLUIR</a></td>
         {% else %}
