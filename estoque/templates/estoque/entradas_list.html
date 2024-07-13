@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+
+    <style>
+        tbody > tr:nth-child(2n) {
+        background-color: lightgray;
+        }
+    </style>
 <div class="container">
     <h1>Relatório - Entradas</h1>
     <div class="row mb-3">

@@ -5,10 +5,8 @@
 # urls.py
 
 from django.urls import path
-# from .views import AlimentoListView, AlimentoCreateView, AlimentoUpdateView, AlimentoDeleteView
-
-
 from autenticacao.views import HomeView, SigupView, SiginView, ExitView
+
 urlpatterns = [
     # path('login/', LoginView.as_view(), name='login'),  # Substitua 'login_view' pela sua função de visualização de login
     # path('menu/', MenuView.as_view(), name='menu'),

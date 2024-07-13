@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from .forms import AlimentoForm
 from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import TemplateView
 
 #Gerar PDF 
 from django.http import HttpResponse
@@ -107,7 +108,7 @@ class EntradasListView(ListView):
     context_object_name = 'entradas'
 
     def get_queryset(self):
-        return RegistroEntrada.objects.all().order_by('-data_registro')
+        return RegistroEntrada.objects.all().ordered('data_registro')
 
 class SaidasListView(ListView):
     model = RegistroSaida
@@ -161,3 +162,9 @@ class SaidasPDFView(View):
             return HttpResponse('Ocorreu um erro ao gerar o PDF.')
 
         return response
+    
+
+
+class FeaturesView(TemplateView):
+    template_name = 'estoque/features_futuras.html'
+

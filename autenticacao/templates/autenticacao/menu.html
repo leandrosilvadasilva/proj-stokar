@@ -53,6 +53,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'saidas_list' %}">Saídas</a>
                     </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'features_futuras' %}">Próximos Lançamentos</a>
+                  </li>
 
                     <form action="{% url 'exit' %}" method="post">
                       {% csrf_token %}

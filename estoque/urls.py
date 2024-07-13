@@ -5,7 +5,7 @@
 
 # urls.py
 from django.urls import path
-from .views import AlimentoListView, AlimentoCreateView, AlimentoUpdateView, AlimentoDeleteView, EntradasListView
+from .views import AlimentoListView, AlimentoCreateView, AlimentoUpdateView, AlimentoDeleteView, EntradasListView, FeaturesView
 from .views import SaidasListView, UtilizarAlimentoView, EntradasPDFView, SaidasPDFView
 
 urlpatterns = [
@@ -18,4 +18,7 @@ urlpatterns = [
     path('saidas/', SaidasListView.as_view(), name='saidas_list'),  # URL para listagem de saídas
     path('entradas/pdf/', EntradasPDFView.as_view(), name='entradas_pdf'),
     path('saidas/pdf/', SaidasPDFView.as_view(), name='saidas_pdf'),
+    path('features/', FeaturesView.as_view(), name='features_futuras'),  # URL para features futuras
+
+
 ]
