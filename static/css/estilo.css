@@ -4,7 +4,6 @@
 }
 
 body {
-  /*background-color: rgb(11, 100, 47);*/
 }
 .titulo {
   color: rgb(251, 253, 255);
@@ -118,6 +117,67 @@ ul.a {
 }
 .itemConecte {
   margin-top: 15px;
+}
+
+.lancamentos-futuros {
+  text-align: center;
+  background: url(/static/img/spaghetti.jpg) no-repeat center;
+  position: relative;
+  background-size: cover;
+  width: auto;
+  height: 1000px;
+}
+.lancamentos-futuros h1 {
+  padding-top: 80px;
+  margin-bottom: 80px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #ffffff;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 3px rgb(30, 88, 28);
+}
+.lancamentos-futuros h1::after {
+  content: " ";
+  height: 4px;
+  width: 400px;
+  background-color: #d48743;
+
+  display: block;
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+.lancamentos-flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.lancamentos-flex div {
+  background-color: rgb(33, 38, 59);
+  width: 350px;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 2%;
+  opacity: 0.9;
+}
+.lancamentos-flex div h2,
+p {
+  color: #f1f1f1;
+  line-height: 3.8;
+}
+
+.lancamentos-flex div h4 {
+  margin-top: 20px;
+  color: #84ec0d;
+  text-align: right;
+  text-decoration: underline;
+  text-shadow: #f1f1f1;
+}
+.lancamentos-flex div img {
+  width: 80px;
 }
 
 /* Tamanho Tablet  */
