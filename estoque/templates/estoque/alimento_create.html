@@ -3,30 +3,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<div class="container mt-5 pb-5">
   <div class="row">
-    <h1>Adicionar Alimento</h1>
-    <form method="post" class="form-control form-control-lg bg-light">
-      {% csrf_token %}
-      <div class="mb-3">
-        <label for="id_nome" class="form-label form-label-lg">Nome:</label>
-        {{ form.nome }}
-      </div>
-      <div class="mb-3">
-        <label for="id_quantidade" class="form-label">Quantidade:</label>
-        {{ form.quantidade }}
-      </div>
-      <div class="mb-3">
-        <label for="id_validade" class="form-label">Validade:</label>
-        {{ form.validade }}
-      </div>
-      <div class="mb-3">
-        <label for="id_peso" class="form-label">Peso(Kg):</label>
-        {{ form.peso }}
-      </div>
-      <button type="submit" class="btn btn-primary">Salvar</button>
-      <a href="{% url 'alimento_list' %}" class="btn btn-secondary">Cancelar</a>
-    </form>
+    <div class="col-md-8 offset-md-2">
+      <h1 class="mb-4 text-center">Adicionar Alimento</h1>
+      <form method="post" class="bg-light p-4 rounded-3">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="id_nome" class="form-label">Nome:</label>
+          {{ form.nome }}
+        </div>
+        <div class="mb-3">
+          <label for="id_quantidade" class="form-label">Quantidade:</label>
+          {{ form.quantidade }}
+        </div>
+        <div class="mb-3">
+          <label for="id_validade" class="form-label">Validade:</label>
+          {{ form.validade }}
+        </div>
+        <div class="mb-3">
+          <label for="id_peso" class="form-label">Peso (Kg):</label>
+          {{ form.peso }}
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <button type="submit" class="btn btn-success me-md-2">Salvar</button>
+          <a href="{% url 'alimento_list' %}" class="btn btn-danger">Cancelar</a>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 {% endblock %}
