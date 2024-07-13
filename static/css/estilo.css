@@ -99,7 +99,7 @@ ul.a {
   width: 100%;
   height: 100px;
   background-color: #212529;
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
 }
@@ -121,9 +121,11 @@ ul.a {
 
 .lancamentos-futuros {
   text-align: center;
-  background: url(/static/img/spaghetti.jpg) no-repeat center;
-  position: relative;
+  /*background: url(/static/img/fundo-lancamentos.jpg) no-repeat center;*/
+  background-color: #212529;
   background-size: cover;
+
+  position: relative;
   width: auto;
   height: 1000px;
 }
@@ -178,6 +180,14 @@ p {
 }
 .lancamentos-flex div img {
   width: 80px;
+}
+
+.menu {
+  background-color: #04aa6d;
+  background: url(/static/img/fundo-menu.jpg) no-repeat center;
+
+  background-size: cover;
+  background-position: 10% 10%;
 }
 
 /* Tamanho Tablet  */

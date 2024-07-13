@@ -108,7 +108,7 @@ class EntradasListView(ListView):
     context_object_name = 'entradas'
 
     def get_queryset(self):
-        return RegistroEntrada.objects.all().ordered('data_registro')
+        return RegistroEntrada.objects.all().order_by('data_registro')
 
 class SaidasListView(ListView):
     model = RegistroSaida
