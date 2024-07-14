@@ -120,33 +120,59 @@ ul.a {
 }
 
 .lancamentos-futuros {
-  text-align: center;
-  /*background: url(/static/img/fundo-lancamentos.jpg) no-repeat center;*/
-  background-color: #212529;
-  background-size: cover;
-
-  position: relative;
-  width: auto;
-  height: 1000px;
+    text-align: center;
+    background-color: #212529;
+    background-size: cover;
+    position: relative;
+    width: auto;
+    padding: 50px 0; /* Ajuste o padding para controle do espaço interno */
 }
+
 .lancamentos-futuros h1 {
-  padding-top: 80px;
-  margin-bottom: 80px;
-  text-align: center;
-  text-transform: uppercase;
-  color: #ffffff;
-  letter-spacing: 3px;
-  text-shadow: 1px 1px 3px rgb(30, 88, 28);
+    margin-bottom: 40px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #ffffff;
+    letter-spacing: 3px;
+    text-shadow: 1px 1px 3px rgb(30, 88, 28);
 }
-.lancamentos-futuros h1::after {
-  content: " ";
-  height: 4px;
-  width: 400px;
-  background-color: #d48743;
 
-  display: block;
-  margin: 0 auto;
-  margin-top: 30px;
+.lancamentos-futuros h1::after {
+    content: " ";
+    height: 4px;
+    width: 400px;
+    background-color: #d48743;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px; /* Reduzi um pouco o espaço superior do underline */
+}
+
+.lancamentos-flex {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.lancamentos-flex > div {
+    text-align: center;
+    flex: 1 1 300px;
+    max-width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.lancamentos-flex > div img {
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .lancamentos-flex > div {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
 }
 
 .lancamentos-flex {

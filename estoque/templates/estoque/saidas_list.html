@@ -1,7 +1,30 @@
-<!-- templates/estoque/saidas_list.html -->
 {% extends 'base.html' %}
 
 {% block content %}
+<style>
+    .list-group-item {
+        border: 1px solid #dee2e6;
+    }
+
+    .list-group-item .row {
+        align-items: center;
+        padding: 10px;
+    }
+
+    .list-group-item strong {
+        font-weight: bold;
+    }
+
+    /* Estilo Zebrado */
+    .list-group-item:nth-child(even) {
+        background-color: #ffffff; /* Branco */
+    }
+
+    .list-group-item:nth-child(odd) {
+        background-color: #f8f9fa; /* Cinza claro */
+    }
+</style>
+
 <div class="container">
     <h1>Relatório - Saídas</h1>
     <div class="row mb-3">
@@ -10,24 +33,26 @@
         </div>
         <div class="col">
             <a href="{% url 'saidas_pdf' %}" class="btn btn-success mb-3">Gerar PDF de Saídas</a>
-            <!-- Restante do conteúdo da listagem de saídas -->
         </div>
     </div>
     <div class="row">
         <div class="col">
             <ul class="list-group">
+                <!-- Cabeçalhos -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-4"><strong>Alimento</strong></div>
+                        <div class="col-md-4"><strong>Quantidade</strong></div>
+                        <div class="col-md-4"><strong>Data</strong></div>
+                    </div>
+                </li>
+                <!-- Itens da lista -->
                 {% for saida in saidas %}
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col">
-                            <strong>Alimento:</strong> {{ saida.alimento.nome }}
-                        </div>
-                        <div class="col">
-                            <strong>Quantidade:</strong> {{ saida.quantidade }}
-                        </div>
-                        <div class="col">
-                            <strong>Data:</strong> {{ saida.data_registro|date:"d/m/Y H:i:s" }}
-                        </div>
+                        <div class="col-md-4">{{ saida.alimento.nome }}</div>
+                        <div class="col-md-4">{{ saida.quantidade }}</div>
+                        <div class="col-md-4">{{ saida.data_registro|date:"d/m/Y H:i:s" }}</div>
                     </div>
                 </li>
                 {% empty %}
@@ -36,6 +61,7 @@
             </ul>
         </div>
     </div>
+    <br>
     <div class="row mb-3">
         <div class="col">
             <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>
@@ -43,4 +69,3 @@
     </div>
 </div>
 {% endblock %}
-
