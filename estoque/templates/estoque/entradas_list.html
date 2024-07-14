@@ -2,11 +2,31 @@
 {% load static %}
 {% block content %}
 
-    <style>
-        tbody > tr:nth-child(2n) {
-        background-color: lightgray;
-        }
-    </style>
+<style>
+    .list-group-item {
+        background-color: #f8f9fa;
+        border: 1px solid #dee2e6;
+    }
+
+    .list-group-item .row {
+        align-items: center;
+        padding: 10px;
+    }
+
+    .list-group-item strong {
+        font-weight: bold;
+    }
+
+    /* Estilo Zebrado */
+    .list-group-item:nth-child(even) {
+        background-color: #ffffff; /* Branco */
+    }
+
+    .list-group-item:nth-child(odd) {
+        background-color: #f8f9fa; /* Cinza claro */
+    }
+</style>
+
 <div class="container">
     <h1>Relatório - Entradas</h1>
     <div class="row mb-3">
@@ -15,25 +35,26 @@
         </div>
         <div class="col">
             <a href="{% url 'entradas_pdf' %}" class="btn btn-success mb-3">Gerar PDF de Entradas</a>
-            <!-- Restante do conteúdo da listagem de entradas -->
         </div>
-    
     </div>
     <div class="row">
         <div class="col">
             <ul class="list-group">
+                <!-- Cabeçalhos -->
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-4"><strong>Alimento</strong></div>
+                        <div class="col-md-4"><strong>Quantidade</strong></div>
+                        <div class="col-md-4"><strong>Data</strong></div>
+                    </div>
+                </li>
+                <!-- Itens da lista -->
                 {% for entrada in entradas %}
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col">
-                            <strong>Alimento:</strong> {{ entrada.alimento.nome }}
-                        </div>
-                        <div class="col">
-                            <strong>Quantidade:</strong> {{ entrada.quantidade }}
-                        </div>
-                        <div class="col">
-                            <strong>Data:</strong> {{ entrada.data_registro|date:"d/m/Y H:i:s" }}
-                        </div>
+                        <div class="col-md-4">{{ entrada.alimento.nome }}</div>
+                        <div class="col-md-4">{{ entrada.quantidade }}</div>
+                        <div class="col-md-4">{{ entrada.data_registro|date:"d/m/Y H:i:s" }}</div>
                     </div>
                 </li>
                 {% empty %}
@@ -42,6 +63,7 @@
             </ul>
         </div>
     </div>
+    <br>
     <div class="row mb-3">
         <div class="col">
             <a href="{% url 'alimento_list' %}" class="btn btn-primary">Voltar para a Listagem de Alimentos</a>

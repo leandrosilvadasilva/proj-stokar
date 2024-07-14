@@ -1,77 +1,78 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
- 
-  
-
-</html>
-<div class="container">
-  <h1>Lista de Alimentos</h1>
-  <div class="col">
-    <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar para Home</a>
-    <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold mb-3">Adicionar +</a>
+<div class="container mt-4">
+  <h1 class="mb-4">Lista de Alimentos</h1>
+  <div class="row mb-3">
+    <div class="col">
+      <a href="{% url 'home' %}" class="btn btn-secondary">Voltar para Home</a>
+      <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold">Adicionar +</a>
+    </div>
   </div>
-<div id="lista">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Nome</th>
-        <th>Quantidade</th>
-        <th>Peso (Kg)</th>
-        <th>Validade</th>
-        <th>Status de Validade</th>
-        <th>Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for alimento in object_list %}
-      <tr>
-        <td>{{ alimento.nome }}</td>
-        <td>{{ alimento.quantidade }}</td>
-        <td>{{ alimento.peso }}</td>
-        <td>{{ alimento.validade }}</td>
-        {% if alimento.status_validade == 'Vencido' %}
-        <td class="text-danger fw-bold">{{ alimento.status_validade }} - <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-sm btn-danger fw-bold justify-content-center">EXCLUIR</a></td>
-        {% else %}
-        <td class="text-success fw-bold">{{ alimento.status_validade }}</td>
-        {% endif %}
-        <td>
-          <a href="{% url 'alimento_update' alimento.pk %}" class="btn btn-md btn-warning">Editar</a>
-          {% if alimento.status_validade != 'Vencido' %}
-          <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#utilizarModal{{ alimento.pk }}">
-            Utilizar
-          </button>
+  <div class="table-responsive">
+    <table class="table table-hover table-bordered rounded">
+      <thead class="thead-dark">
+        <tr>
+          <th>Nome</th>
+          <th>Quantidade</th>
+          <th>Peso (Kg)</th>
+          <th>Validade</th>
+          <th>Status de Validade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for alimento in object_list %}
+        <tr class="{% cycle 'table-light' 'table-white' %}">
+          <td>{{ alimento.nome }}</td>
+          <td>{{ alimento.quantidade }}</td>
+          <td>{{ alimento.peso }}</td>
+          <td>{{ alimento.validade }}</td>
+          {% if alimento.status_validade == 'Vencido' %}
+          <td class="text-danger fw-bold">{{ alimento.status_validade }} - <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-sm btn-danger fw-bold">EXCLUIR</a></td>
+          {% else %}
+          <td class="text-success fw-bold">{{ alimento.status_validade }}</td>
           {% endif %}
-          <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-md {% if alimento.status_validade == 'Vencido' %}btn-secondary d-none{% else %}btn-danger{% endif %}">Excluir</a>
-        </td>
-      </tr>
-      <!-- Modal de Utilização -->
-      <div class="modal fade" id="utilizarModal{{ alimento.pk }}" tabindex="-1" aria-labelledby="utilizarModalLabel{{ alimento.pk }}" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="utilizarModalLabel{{ alimento.pk }}">Utilizar {{ alimento.nome }}</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <td>
+            <a href="{% url 'alimento_update' alimento.pk %}" class="btn btn-warning btn-sm">Editar</a>
+            {% if alimento.status_validade != 'Vencido' %}
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#utilizarModal{{ alimento.pk }}">
+              Utilizar
+            </button>
+            {% endif %}
+            <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-danger btn-sm {% if alimento.status_validade == 'Vencido' %}d-none{% endif %}">Excluir</a>
+          </td>
+        </tr>
+        <!-- Modal de Utilização -->
+        <div class="modal fade" id="utilizarModal{{ alimento.pk }}" tabindex="-1" aria-labelledby="utilizarModalLabel{{ alimento.pk }}" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="utilizarModalLabel{{ alimento.pk }}">Utilizar {{ alimento.nome }}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <form method="post" action="{% url 'utilizar_alimento' alimento.pk %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                  <label for="quantidade">Quantidade a Utilizar:</label>
+                  <input type="number" id="quantidade" name="quantidade" class="form-control" min="1" max="{{ alimento.quantidade }}" required>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="submit" class="btn btn-primary">Confirmar Utilização</button>
+                </div>
+              </form>
             </div>
-            <form method="post" action="{% url 'utilizar_alimento' alimento.pk %}">
-              {% csrf_token %}
-              <div class="modal-body">
-                <label for="quantidade">Quantidade a Utilizar:</label>
-                <input type="number" id="quantidade" name="quantidade" class="form-control" min="1" max="{{ alimento.quantidade }}" required>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Confirmar Utilização</button>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
-      {% endfor %}
-    </tbody>
-  </table>
-</div>
-  <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold">Adicionar +</a>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold">Adicionar +</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
