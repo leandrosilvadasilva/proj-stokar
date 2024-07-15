@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<<<<<<< HEAD
 <div class="container mt-4">
   <h1 class="mb-4">Lista de Alimentos</h1>
   <div class="row mb-3">
@@ -32,6 +33,44 @@
           <td class="text-danger fw-bold">{{ alimento.status_validade }} - <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-sm btn-danger fw-bold">EXCLUIR</a></td>
           {% else %}
           <td class="text-success fw-bold">{{ alimento.status_validade }}</td>
+=======
+<div class="container">
+  <h1>Lista de Alimentos</h1>
+  <div class="col">
+    <a href="{% url 'home' %}" class="btn btn-secondary mb-3">Voltar para Home</a>
+    <a href="{% url 'alimento_create' %}" class="btn btn-primary fw-bold mb-3">Adicionar +</a>
+  </div>
+<div id="lista">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Quantidade</th>
+        <th>Peso (Kg)</th>
+        <th>Validade</th>
+        <th>Status de Validade</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for alimento in object_list %}
+      <tr>
+        <td>{{ alimento.nome }}</td>
+        <td>{{ alimento.quantidade }}</td>
+        <td>{{ alimento.peso }}</td>
+        <td>{{ alimento.validade }}</td>
+        {% if alimento.status_validade == 'Vencido' %}
+        <td class="text-danger fw-bold">{{ alimento.status_validade }} - <a href="{% url 'alimento_delete' alimento.pk %}" class="btn btn-sm btn-danger fw-bold justify-content-center">EXCLUIR</a></td>
+        {% else %}
+        <td class="text-success fw-bold">{{ alimento.status_validade }}</td>
+        {% endif %}
+        <td>
+          <a href="{% url 'alimento_update' alimento.pk %}" class="btn btn-md btn-warning">Editar</a>
+          {% if alimento.status_validade != 'Vencido' %}
+          <button type="button" class="btn btn-md btn-primary" data-bs-toggle="modal" data-bs-target="#utilizarModal{{ alimento.pk }}">
+            Utilizar
+          </button>
+>>>>>>> cef95d22171e492f31419d0567b6505067139c7d
           {% endif %}
           <td>
             <a href="{% url 'alimento_update' alimento.pk %}" class="btn btn-warning btn-sm">Editar</a>
